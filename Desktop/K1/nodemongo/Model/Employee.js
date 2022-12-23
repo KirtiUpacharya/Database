@@ -13,6 +13,9 @@ const EmployeeSchema=new Schema({
     age:{
         type:Number
     },
+    avatar:{
+        type:String // install multer to manage the file
+    }
 }, {timestamps:true})
 
 const Employee=mongoose.model('Employee',EmployeeSchema)
