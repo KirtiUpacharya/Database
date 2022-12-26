@@ -1,5 +1,7 @@
 const mongoose=require('mongoose')
 const Schema=mongoose.schema
+const mongoosePaginate=require('mongoose-paginate-v2')
+
 const EmployeeSchema=new Schema({
     name:{
         type:String

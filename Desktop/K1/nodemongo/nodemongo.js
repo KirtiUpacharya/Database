@@ -7,6 +7,9 @@
   const db=mongoose.connection;
   const upload=require('../middleware/upload')  
   const AuthRoute=require('../routes/auth.js')
+  const dotenv=require('dotenv')
+  dotenv.config()
+  
 
   db.on('error',(err)=>{
     console.log(err)

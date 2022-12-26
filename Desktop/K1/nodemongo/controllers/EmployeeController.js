@@ -1,8 +1,9 @@
 const { response } = require('express')
 const { findByIdAndDelete } = require('../Model/Employee')
 const Employee=require('../models/Employee')
+const paginate=require(mongoose_paginate_v2)
 
-//show the list of the Employee
+//show the list of the Employee without pagination
 const index=(req,res,next)=>{
 
      Employee.find()
@@ -14,6 +15,23 @@ const index=(req,res,next)=>{
         res.json({message: 'An error occured!'})
         })
      }
+
+ //show the list of the Employee with pagination
+
+ const index1=(req,res,next)=>{
+ Employee.paginate({},{page:req.query.page,limit:req.query.limit}) //pass two parameters while tseting also,page and limit in query//http://localhost:3000/api/employee?page=1&limit=5
+ .then(response=> {
+    res.json({
+        response
+    })
+ })
+ .catch(error=>{
+    res.json({
+        message:"An error occured :" +error
+    })
+ })
+
+ }
  // show single employee
     const show=(req,res,next)=>{
         let employeeId=req.body.employeeId

@@ -40,8 +40,8 @@ const login=(req,res,next)=>{
             res.json({error:err})
         }
         if(result){
-            let token=jwt.sign({name:user.name},'verySecretValue',{expiresIn:'30s'})
-            let Refreshtoken=jwt.sign({name:user.name},'refreshtokensecret',{expiresIn:'48h'})
+            let token=jwt.sign({name:user.name},process.env.ACCESS_TOKEN_SECRET,{expiresIn:'30s'})
+            let Refreshtoken=jwt.sign({name:user.name},process.env.Refreshtoken,{expiresIn:'48h'})
             res.json({
                 message:'Login Successful',
                 token
